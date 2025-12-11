@@ -100,6 +100,9 @@ Powerful telegram bot that scrape Posters from multiple OTT platforms & Bypass d
 - **`DATABASE_NAME`** - MongoDB database name 
 - **`SUDO_USERS`** - Space-separated list of user IDs with sudo access
 - **`AUTH_CHATS`** - Space-separated list of authorized chat IDs
+- **`WEB_SERVER`** - Set True if deploying on koyeb/render else False
+- **`PING_URL`** - Your koyeb/render's Base url
+- **`PING_TIME`** - Intervel time in seconds
 - **`PUBLIC_MODE`** - Set to `True` for public access, `False` for private use only
 - **`TIMEZONE`** - Timezone for the bot 
 - **`TMDB_ACCESS_TOKEN`** - TMDB API token (optional, uses proxy if not set)
