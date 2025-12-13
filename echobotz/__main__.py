@@ -1,4 +1,5 @@
 # ruff: noqa: E402
+
 import os
 from datetime import datetime
 from logging import Formatter
@@ -14,6 +15,12 @@ from .core.plugs import add_plugs
 from .helper.utils.db import database
 from .helper.utils.bot_cmds import _get_bot_commands
 
+try:
+    from web import _start_web, _ping
+    WEB_OK = True
+except ImportError:
+    WEB_OK = False
+
 
 async def main():
     await database._load_all()
@@ -26,6 +33,7 @@ async def main():
     await gather(
         EchoBot.start(),
     )
+
     await EchoBot.bot.set_bot_commands(_get_bot_commands())
 
     add_plugs()
@@ -43,13 +51,21 @@ async def main():
                 chat_id=chat_id,
                 message_id=msg_id,
                 text=f"<b>Restarted Successfully!</b>\n<code>{now}</code>",
+                disable_web_page_preview=True,
             )
 
             os.remove(".restartmsg")
         except Exception as e:
-            LOGGER.error(f"{e}")
+            LOGGER.error(f"Restart notify error: {e}")
+            
+    if Config.WEB_SERVER and WEB_OK:
+        LOGGER.info("Starting web server...")
+        bot_loop.create_task(_start_web())
+        bot_loop.create_task(_ping(Config.PING_URL, Config.PING_TIME))
+    else:
+        LOGGER.info("Web server disabled")
 
-    LOGGER.info("All EchoBot Services Started")
+    LOGGER.info("EchoBot fully started")
 
     await idle()
 
