@@ -6,6 +6,7 @@ Powerful telegram bot that scrape Posters from multiple OTT platforms & Bypass d
 <summary><strong>DDL Bypass Sites</strong></summary>
 
 - Gdflix
+- Vegamovies 
 - Extraflix 
 - Hubdrive
 - Hubcloud
@@ -61,6 +62,7 @@ Powerful telegram bot that scrape Posters from multiple OTT platforms & Bypass d
 /poster - Scrape any movie/show poster
 /imdb - Search movie/series on IMDb
 /anime - Search Anime on Anilist
+/vegamovies - Bypass Vegamovies DDL Links
 /gdflix - Bypass GDFlix links to direct links
 /extraflix - Bypass ExtraFlix links to direct links
 /hubcloud - Bypass HubCloud links to direct links
