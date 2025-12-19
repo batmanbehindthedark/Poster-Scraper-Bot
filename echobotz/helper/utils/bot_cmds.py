@@ -24,6 +24,7 @@ class BotCommands:
             "instagram", "ig",
             "facebook", "fb",
             "tiktok", "tk",
+            "crunchyroll", "cr"
         ],
         "Imdb": ["imdb", "md"],
         "Anime": ["anime", "an"],
@@ -80,6 +81,7 @@ CMD_HELP = {
     "hblinks": "Bypass HBLinks to direct links",
     "imdb": "Search Movie/Series on IMDb",
     "anime": "Search Anime on Anilist",
+    "crunchyroll": "Scrape Crunchyroll anime poster from name or URL",
     "prime": "Scrape Prime Video poster from URL",
     "zee5": "Scrape ZEE5 poster from URL",
     "appletv": "Scrape Apple TV+ poster from URL",
@@ -109,7 +111,5 @@ CMD_HELP = {
     "overlap": "Overlay logo on poster",
 }
 
-
 def _get_bot_commands():
     return [BotCommand(cmd, desc) for cmd, desc in CMD_HELP.items()]
-    
