@@ -93,25 +93,36 @@ def _bp_label_from_name(name):
         return s[8:].strip() or s
     return s
 
-
 def _bp_links(links):
     if not isinstance(links, dict) or not links:
-        return "• No direct links found."
-    lines = []
+        return "╰╴ No direct links found."
+
+    valid = []
     for label, url in links.items():
         if not isinstance(url, str):
             continue
         u = url.strip()
         if not u.startswith(("http://", "https://")):
             continue
-        lbl = str(label).strip()
-        if not lbl:
-            lbl = "Link"
-        lines.append(f"• <b>{lbl}:</b> <a href=\"{u}\">Click Here</a>")
-    if not lines:
-        return "• No direct links found."
-    return "\n".join(lines)
+        lbl = str(label).strip() or "Link"
+        valid.append((lbl, u))
 
+    if not valid:
+        return "╰╴ No direct links found."
+
+    lines = []
+    total = len(valid)
+    for i, (lbl, u) in enumerate(valid):
+        if i == total - 1:
+            prefix = "╰╴"
+        else:
+            prefix = "╞╴"
+        lines.append(
+            f"{prefix} <b>{lbl}:</b> <a href=\"{u}\">Click Here</a>"
+        )
+
+    return "\n".join(lines)
+    
 def _bp_norm(data, service):
     root = data
     if isinstance(data, dict) and isinstance(data.get("final"), dict):
