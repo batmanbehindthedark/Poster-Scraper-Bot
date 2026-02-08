@@ -171,7 +171,7 @@ def _clean(s):
 
 EchoByRegistry = {
     # By: HgBots
-    "gdflix": EchoBypass("gdflix", "https://hgbots.vercel.app/bypaas/gd.php?url="),
+    "gdflix": EchoBypass("gdflix", "https://pbx1botapi.vercel.app/api/gdflix?url="),
     "hubdrive": EchoBypass("hubdrive", "https://hgbots.vercel.app/bypaas/hubdrive.php?url="),
     # By: PBX1 
     "extraflix": EchoBypass("extraflix", "https://pbx1botapi.vercel.app/api/extraflix?url="),
